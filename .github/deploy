@@ -1,0 +1,43 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    # Add steps for testing, building, and pushing your Docker image
+    
+    # Step for deployment
+    - name: Deploy
+      run: echo "Deploying application"
+      if: success()
+      env:
+        CURRENT_VERSION: ${{ github.ref }}
+        run: |
+          echo $CURRENT_VERSION > last_good_version.txt
+          git add last_good_version.txt
+          git commit -m "Update last good version to $CURRENT_VERSION"
+          git push
+    
+    # This is a simplification. Real-world scenarios require actual deployment scripts or commands.
+
+  rollback:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: ${{ failure() }}
+    steps:
+    - name: Rollback to Previous Version
+      run: 
+        LAST_GOOD_VERSION=$(cat ./last_good_version.txt)
+        docker pull ghcr.io/zoeleve/main-temp:${LAST_GOOD_VERSION}
+        echo "Rollback to previous version ${LAST_GOOD_VERSION}"
+        #docker pull myapp:${LAST_GOOD_VERSION}
+        
+        
