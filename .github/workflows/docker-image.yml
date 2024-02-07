@@ -1,0 +1,15 @@
+name: Docker Image CI for GHCR
+
+on: 
+  push:
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Build and push the image
+        run: |
+          docker login --username zoeleve --password ${{ secrets.GH_PAT }}
+          docker build . --tag ghcr.io/zoeleve/main-temp:latest
+          docker push ghcr.io/zoeleve/main-temp:latest
