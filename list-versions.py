@@ -51,7 +51,7 @@ def list_github_packages(owner, repo, token):
 
 
 if __name__ == "__main__":
-    OWNER = input("Enter the GitHub owner (user/org): ")
-    REPO = input("Enter the repository name: ")
-    TOKEN = input("Enter your GitHub token: ")
+    OWNER = input("zoeleve")
+    REPO = input("Test")
+    TOKEN = input("ghcr login")
     list_github_packages(OWNER, REPO, TOKEN)
