@@ -12,17 +12,16 @@ def get_package_versions(owner, repo, package_name):
         print("GitHub token not found. Please set it in your environment variables.")
         return
 
-    # api_url = f"https://api.github.com/repos/{owner}/{repo}/packages/container/{package_name}/versions"
-    api_url = (
-        f"https://api.github.com/{owner}/packages/container/{package_name}/versions"
-    )
+    api_url = f"https://api.github.com/repos/{owner}/{repo}/packages/container/{package_name}/versions"
+    # api_url = f"https://api.github.com/{owner}/{repo}/pkgs/container/{package_name}/versions"
+
     headers = {
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github.v3+json",
     }
 
     response = requests.get(api_url, headers=headers)
-    print(response.status_code)
+    print(api_url)
     if response.status_code == 200:
         versions = response.json()
         if versions:
