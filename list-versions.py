@@ -3,7 +3,8 @@ import requests
 from dotenv import load_dotenv
 
 # Load environment variables from .env file 
-load_dotenv()
+dotenv_path = '/Users/zoelevesanou/Documents/GitHub/Test/.env'
+load_dotenv(dotenv_path=dotenv_path)
 
 
 def get_package_versions(owner, repo, package_name):
