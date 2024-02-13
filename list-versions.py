@@ -22,6 +22,7 @@ def get_package_versions(owner, repo, package_name):
     }
 
     response = requests.get(api_url, headers=headers)
+    print(response.status_code)
     if response.status_code == 200:
         versions = response.json()
         if versions:
