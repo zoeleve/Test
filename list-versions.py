@@ -1,9 +1,9 @@
 import os
 import requests
-##from dotenv import load_dotenv
+from dotenv import load_dotenv
 
 # Load environment variables from .env file
-# load_dotenv()
+load_dotenv()
 
 
 def get_package_versions(owner, repo, package_name):
