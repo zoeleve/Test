@@ -2,17 +2,18 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# Load environment variables from .env file 
+# Load environment variables from .env file
 load_dotenv()
 
 
 def get_package_versions(owner, repo, package_name):
-    token = os.getenv('GH_TOKEN')
+    token = os.getenv("GH_TOKEN")
     if not token:
         print("GitHub token not found. Please set it in your environment variables.")
         return
 
     api_url = f"https://api.github.com/repos/{owner}/{repo}/packages/container/{package_name}/versions"
+    
     headers = {
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github.v3+json",
