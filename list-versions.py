@@ -13,7 +13,9 @@ def get_package_versions(owner, repo, package_name):
         return
 
     # api_url = f"https://api.github.com/repos/{owner}/{repo}/packages/container/{package_name}/versions"
-    api_url = f"https://api.github.com/{owner}/{repo}/packages/container/{package_name}/versions"
+    api_url = (
+        f"https://api.github.com/{owner}/packages/container/{package_name}/versions"
+    )
     headers = {
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github.v3+json",
