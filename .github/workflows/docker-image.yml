@@ -36,10 +36,10 @@ jobs:
       - name: Install python-dotenv
         run: |
           pip install python-dotenv
-      
+
       - name: Use GitHub Token
         env:
-            GH_TOKEN: ${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-            echo "Using GitHub Token: $GH_TOKEN"
-            # Use the token for CLI commands or with your application
+          echo "Using GitHub Token: $GH_TOKEN"
+          # Use the token for CLI commands or with your application
