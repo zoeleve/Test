@@ -1,6 +1,7 @@
 import requests
 import os
 
+
 def get_package_versions(owner, repo, package_name, token):
     api_url = f"https://api.github.com/orgs/{owner}/packages/container/{package_name}/versions"
     headers = {
@@ -51,7 +52,7 @@ def list_github_packages(owner, repo, token):
 
 
 if __name__ == "__main__":
-    OWNER = input("zoeleve")
-    REPO = input("Test")
-    TOKEN = input("ghcr login")
+    OWNER = input("Enter the GitHub owner (user/org): ")
+    REPO = input("Enter the repository name: ")
+    TOKEN = input("Enter token: ")
     list_github_packages(OWNER, REPO, TOKEN)
