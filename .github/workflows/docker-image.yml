@@ -1,4 +1,4 @@
-name: Docker Image CI for GHCR and depedencies 
+name: Docker Image CI for GHCR and depedencies
 
 on:
   push:
@@ -32,3 +32,7 @@ jobs:
       - name: Install requests
         run: |
           pip install requests
+
+      - name: Install python-dotenv
+        run: |
+          pip install python-dotenv
