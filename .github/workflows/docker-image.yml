@@ -1,15 +1,42 @@
-name: Docker Image CI for GHCR
+name: Docker Image CI for GHCR and depedencies 
 
-on: 
+on:
   push:
 
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v3
+
       - name: Build and push the image
         run: |
           docker login --username ${{ secrets.GH_USER }} --password ${{ secrets.GH_PAT }} ghcr.io
           docker build . --tag ghcr.io/zoeleve/main-temp:latest
           docker push ghcr.io/zoeleve/main-temp:latest
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          poetry install
+
+      - name: Lint with flake8
+        run: |
+          poetry run flake8 .
+
+      - name: Check code formatting with black
+        run: |
+          poetry run black . --check
+
+      - name: Test with pytest
+        run: |
+          poetry run pytest
+      
+      - name: Install requests
+        run: |
+          pip install requests
