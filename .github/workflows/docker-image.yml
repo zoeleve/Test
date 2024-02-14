@@ -43,3 +43,9 @@ jobs:
         run: |
           echo "Using GitHub Token: $GH_TOKEN"
           # Use the token for CLI commands or with your application
+
+      - name: Use GitHub Token Authenticated
+        run: |
+          echo "Using GitHub Token for authenticated operations"
+          # Example: List repositories for the authenticated user
+          curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" https://api.github.com/user/repos
