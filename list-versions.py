@@ -7,7 +7,7 @@ load_dotenv()
 
 
 def get_package_versions(owner, repo, package_name):
-    token = os.getenv("GH_TOKEN")
+    #token = os.getenv("GH_TOKEN")
     if not token:
         print("GitHub token not found. Please set it in your environment variables.")
         return
@@ -18,7 +18,7 @@ def get_package_versions(owner, repo, package_name):
     api_url = f"https://api.github.com/zoeleve/Test/pkgs/container/main-temp/versions"
 
     headers = {
-        "Authorization": f"Bearer {token}",
+        "Authorization": f"Bearer GH_TOKEN",
         "Accept": "application/vnd.github.v3+json",
     }
 
