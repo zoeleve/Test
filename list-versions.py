@@ -12,10 +12,8 @@ def get_package_versions(owner, repo, package_name):
         print("GitHub token not found. Please set it in your environment variables.")
         return
 
-    # api_url = f"https://api.github.com/repos/{owner}/{repo}/packages/container/{package_name}/versions"
+    api_url = f"https://api.github.com/repos/{owner}/{repo}/packages/container/{package_name}/versions"
     # api_url = f"https://api.github.com/{owner}/{repo}/pkgs/container/{package_name}/versions"
-
-    api_url = f"https://api.github.com/zoeleve/Test/packages/container/main-temp/versions"
 
     headers = {
         "Authorization": f"Bearer {token}",
