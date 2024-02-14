@@ -2,7 +2,7 @@
 name = "custom-cd-tool"
 version = "0.1.0"
 description = ""
-authors = ["zoeleve"]
+authors = ["zlevesanou <zlevesanou@core-innnovation.com"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
